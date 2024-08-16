@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostBinding, inject, input, ViewEncapsulation} from '@angular/core';
+import {Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation} from '@angular/core';
 
 
 @Component({
@@ -16,10 +16,11 @@ import {Component, ElementRef, HostBinding, inject, input, ViewEncapsulation} fr
 export class ControlComponent {
   label = input.required<string>();
   protected readonly input = input;
-
   private el = inject(ElementRef);
+  //@ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
 
   onClick() {
-
+    console.log(this.control());
   }
 }
