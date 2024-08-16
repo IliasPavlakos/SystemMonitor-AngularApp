@@ -20,6 +20,6 @@ export class ControlComponent {
   private el = inject(ElementRef);
 
   onClick() {
-    console.log(this.el);
+
   }
 }

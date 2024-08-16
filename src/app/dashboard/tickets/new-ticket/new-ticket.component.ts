@@ -18,7 +18,7 @@ export class NewTicketComponent {
 
 
 
-  onSubmit(){
+  onSubmit(title: string, ticketText: string) {
 
   }
 }
