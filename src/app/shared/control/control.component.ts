@@ -1,4 +1,13 @@
-import {Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation} from '@angular/core';
+import {
+  afterNextRender,
+  afterRender,
+  Component,
+  contentChild,
+  ElementRef,
+  inject,
+  input,
+  ViewEncapsulation
+} from '@angular/core';
 
 
 @Component({
@@ -17,8 +26,12 @@ export class ControlComponent {
   label = input.required<string>();
   protected readonly input = input;
   private el = inject(ElementRef);
-  //@ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
   private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  constructor() {
+    afterRender(() => { console.log('afterRender'); });
+    afterNextRender(() => { console.log('afterNextRender'); });
+  }
 
   onClick() {
     console.log(this.control());
